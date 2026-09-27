@@ -1,0 +1,6 @@
+{
+  "name": "woolworths-shopping-bot-cloud",
+  "version": "1.0.0",
+  "description": "WhatsApp shopping-list bot using Meta WhatsApp Cloud API, deployed serverless on Vercel.",
+  "main": "api/webhook.js"
+}
