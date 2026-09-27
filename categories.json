@@ -1,0 +1,39 @@
+[
+  {
+    "id": "produce",
+    "name": "ירקות ופירות",
+    "keywords": ["עגבני", "מלפפון", "בצל", "שום", "תפוח אדמה", "בטטה", "גזר", "פלפל", "חסה", "כרוב", "ברוקולי", "כרובית", "קישוא", "פטריי", "אבוקדו", "ליים", "לימון", "תפוז", "תפוח עץ", "בננה", "ענב", "תות", "אגס", "אפרסק", "מנגו", "אננס", "עשבי תיבול", "פטרוזיליה", "כוסברה", "נענע", "תמר", "סלרי",
+      "tomato", "cucumber", "onion", "garlic", "potato", "sweet potato", "carrot", "capsicum", "lettuce", "cabbage", "broccoli", "cauliflower", "zucchini", "mushroom", "avocado", "lime", "lemon", "orange", "apple", "banana", "grape", "strawberr", "pear", "peach", "mango", "pineapple", "herbs", "parsley", "coriander", "mint", "celery", "spinach", "salad"]
+  },
+  {
+    "id": "bakery",
+    "name": "מאפייה",
+    "keywords": ["לחם", "חלה", "פיתה", "בגט", "לחמני", "קרואסון", "עוגה", "מאפה", "טורטיה", "בורקס",
+      "bread", "baguette", "roll", "croissant", "cake", "pastry", "tortilla", "bun", "muffin", "wrap"]
+  },
+  {
+    "id": "deli",
+    "name": "מעדנייה וגבינות",
+    "keywords": ["גבינה", "פטה", "מוצרלה", "פרמזן", "חומוס", "סלט", "נקניק", "פסטרמה", "סלמי",
+      "cheese", "feta", "mozzarella", "parmesan", "hummus", "deli", "salami", "prosciutto", "ham"]
+  },
+  {
+    "id": "meat_seafood",
+    "name": "בשר ודגים",
+    "keywords": ["עוף", "בשר", "בקר", "טלה", "הודו", "נקניקי", "המבורגר", "סטייק", "דג", "סלמון", "טונה", "שרימפס", "קציצ",
+      "chicken", "beef", "lamb", "turkey", "sausage", "burger", "steak", "fish", "salmon", "tuna", "prawn", "shrimp", "mince", "pork", "bacon"]
+  },
+  {
+    "id": "dairy_eggs",
+    "name": "חלב, ביצים ומקרר",
+    "keywords": ["חלב", "ביצים", "יוגורט", "חמאה", "שמנת", "קוטג", "לבן", "מרגרינה",
+      "milk", "eggs", "yoghurt", "yogurt", "butter", "cream", "cottage", "margarine"]
+  },
+  {
+    "id": "frozen",
+    "name": "קפואים",
+    "keywords": ["קפוא", "גלידה", "צ'יפס קפוא", "ירקות קפואים", "פיצה קפואה",
+      "frozen", "ice cream", "icecream", "fries", "frozen veg", "frozen pizza"]
+  },
+  {
+    "id": "breakfast",
