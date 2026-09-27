@@ -143,3 +143,9 @@ module.exports = async (req, res) => {
     } catch (err) {
       console.error(err);
       res.status(200).send("ok"); // תמיד 200 כדי
+    }
+    return;
+  }
+
+  res.status(405).send("Method Not Allowed");
+};
