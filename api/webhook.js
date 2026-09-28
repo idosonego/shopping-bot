@@ -74,7 +74,8 @@ function buildSummary(items) {
 // ---------- שליחת הודעת וואטסאפ דרך Meta Graph API ----------
 async function sendWhatsAppMessage(toPhone, text) {
   const url = `https://graph.facebook.com/v20.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`;
-  await fetch(url, {
+     const resp = await fetch(url, {
+          console.log("Graph API:", resp.status, await resp.text());
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
