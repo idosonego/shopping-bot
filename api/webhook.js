@@ -28,11 +28,20 @@ async function addItem(text) {
   return items.length;
 }
 
+function normalizeHebrew(str) {
+  return str
+    .replace(/ן/g, "נ")
+    .replace(/ם/g, "מ")
+    .replace(/ץ/g, "צ")
+    .replace(/ף/g, "פ")
+    .replace(/ך/g, "כ");
+}
+
 function categoryIndexForItem(itemText) {
-  const lower = itemText.toLowerCase();
+  const lower = normalizeHebrew(itemText.toLowerCase());
   for (let i = 0; i < categories.length; i++) {
     for (const kw of categories[i].keywords) {
-      if (lower.includes(kw.toLowerCase())) return i;
+      if (lower.includes(normalizeHebrew(kw.toLowerCase()))) return i;
     }
   }
   return categories.length - 1;
