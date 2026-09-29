@@ -108,8 +108,16 @@ module.exports = async (req, res) => {
         await saveList([]);
         replyText = "🗑️ הרשימה אופסה ידנית.";
       } else {
-        const count = await addItem(bodyRaw);
-        replyText = `✅ נוסף: ${bodyRaw} (סה"כ ${count} מוצרים ברשימה)`;
+        const lines = bodyRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
+        let total = 0;
+        for (const line of lines) {
+          total = await addItem(line);
+        }
+        if (lines.length === 1) {
+          replyText = `✅ נוסף: ${lines[0]} (סה"כ ${total} מוצרים ברשימה)`;
+        } else {
+          replyText = `✅ נוספו ${lines.length} מוצרים: ${lines.join(", ")} (סה"כ ${total} מוצרים ברשימה)`;
+        }
       }
 
       await sendWhatsAppMessage(fromPhone, replyText);
