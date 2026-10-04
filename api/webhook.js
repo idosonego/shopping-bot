@@ -104,7 +104,14 @@ module.exports = async (req, res) => {
       const bodyRaw = message.text.body.trim();
       let replyText;
 
-      if (bodyRaw === "סיכום") {
+      if (bodyRaw === "תצוגה") {
+        const items = await loadList();
+        if (items.length === 0) {
+          replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש *תצוגה* או *סיכום*.";
+        } else {
+          replyText = "👀 *תצוגת הרשימה הנוכחית:*\n\n" + buildSummary(items);
+        }
+      } else if (bodyRaw === "סיכום") {
         const items = await loadList();
         if (items.length === 0) {
           replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש שוב *סיכום*.";
