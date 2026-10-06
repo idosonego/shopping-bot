@@ -123,6 +123,33 @@ module.exports = async (req, res) => {
       } else if (bodyRaw === "איפוס" || bodyRaw === "נקה") {
         await saveList([]);
         replyText = "🗑️ הרשימה אופסה ידנית.";
+      } else if (bodyRaw.startsWith("תוריד ") || bodyRaw.startsWith("להוריד ")) {
+        const prefixLen = bodyRaw.startsWith("להוריד ") ? 7 : 6;
+        const toRemoveRaw = bodyRaw.slice(prefixLen).trim();
+        const toRemove = toRemoveRaw
+          .split("\n")
+          .map((l) => normalizeHebrew(l.trim().toLowerCase()))
+          .filter((l) => l.length > 0);
+
+        const items = await loadList();
+        const removed = [];
+        const remaining = [];
+        for (const item of items) {
+          const normItem = normalizeHebrew(item.toLowerCase());
+          const match = toRemove.some((t) => normItem === t || normItem.includes(t) || t.includes(normItem));
+          if (match) {
+            removed.push(item);
+          } else {
+            remaining.push(item);
+          }
+        }
+
+        if (removed.length === 0) {
+          replyText = "לא מצאתי ברשימה מוצר שתואם למה שציינת.";
+        } else {
+          await saveList(remaining);
+          replyText = `🗑️ הוסר/ו: ${removed.join(", ")} (נשארו ${remaining.length} מוצרים ברשימה)`;
+        }
       } else {
         const lines = bodyRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
         let total = 0;
