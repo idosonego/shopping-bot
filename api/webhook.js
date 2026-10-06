@@ -3,6 +3,8 @@ const categories = require("../categories.json");
 const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
 const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
 const LIST_KEY = "shopping:list";
+const REMOVED_DEFAULTS_KEY = "shopping:removed_defaults";
+const DEFAULT_ITEMS = ["חלב", "ביצים", "מלפפונים", "עגבניות"];
 
 async function redisCommand(...args) {
   const res = await fetch(`${REDIS_URL}/${args.map(encodeURIComponent).join("/")}`, {
@@ -21,6 +23,15 @@ async function saveList(items) {
   await redisCommand("set", LIST_KEY, JSON.stringify(items));
 }
 
+async function loadRemovedDefaults() {
+  const raw = await redisCommand("get", REMOVED_DEFAULTS_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+
+async function saveRemovedDefaults(arr) {
+  await redisCommand("set", REMOVED_DEFAULTS_KEY, JSON.stringify(arr));
+}
+
 async function addItem(text) {
   const items = await loadList();
   items.push(text.trim());
@@ -35,6 +46,14 @@ function normalizeHebrew(str) {
     .replace(/ץ/g, "צ")
     .replace(/ף/g, "פ")
     .replace(/ך/g, "כ");
+}
+
+function matchesDefault(text) {
+  const norm = normalizeHebrew(text.toLowerCase());
+  return DEFAULT_ITEMS.find((d) => {
+    const nd = normalizeHebrew(d.toLowerCase());
+    return norm === nd || norm.includes(nd) || nd.includes(norm);
+  });
 }
 
 function categoryIndexForItem(itemText) {
@@ -106,37 +125,55 @@ module.exports = async (req, res) => {
 
       if (bodyRaw === "תצוגה") {
         const items = await loadList();
-        if (items.length === 0) {
+        const removedDefaults = await loadRemovedDefaults();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const fullList = [...activeDefaults, ...items];
+        if (fullList.length === 0) {
           replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש *תצוגה* או *סיכום*.";
         } else {
-          replyText = "👀 *תצוגת הרשימה הנוכחית:*\n\n" + buildSummary(items);
+          replyText = "👀 *תצוגת הרשימה הנוכחית:*\n\n" + buildSummary(fullList);
         }
       } else if (bodyRaw === "סיכום") {
         const items = await loadList();
-        if (items.length === 0) {
+        const removedDefaults = await loadRemovedDefaults();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const fullList = [...activeDefaults, ...items];
+        if (fullList.length === 0) {
           replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש שוב *סיכום*.";
         } else {
-          replyText = "📝 *רשימת קניות מסודרת:*\n\n" + buildSummary(items);
+          replyText = "📝 *רשימת קניות מסודרת:*\n\n" + buildSummary(fullList);
           await saveList([]);
-          replyText += "\n\n✅ הרשימה אופסה. אפשר להתחיל רשימה חדשה.";
+          await saveRemovedDefaults([]);
+          replyText += "\n\n✅ הרשימה אופסה (מוצרי הקבע חזרו). אפשר להתחיל רשימה חדשה.";
         }
       } else if (bodyRaw === "איפוס" || bodyRaw === "נקה") {
         await saveList([]);
-        replyText = "🗑️ הרשימה אופסה ידנית.";
+        await saveRemovedDefaults([]);
+        replyText = "🗑️ הרשימה אופסה ידנית (מוצרי הקבע חזרו).";
       } else if (bodyRaw.startsWith("תוריד ") || bodyRaw.startsWith("להוריד ")) {
         const prefixLen = bodyRaw.startsWith("להוריד ") ? 7 : 6;
         const toRemoveRaw = bodyRaw.slice(prefixLen).trim();
-        const toRemove = toRemoveRaw
-          .split("\n")
-          .map((l) => normalizeHebrew(l.trim().toLowerCase()))
-          .filter((l) => l.length > 0);
+        const toRemoveLines = toRemoveRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
 
+        const removedDefaults = await loadRemovedDefaults();
         const items = await loadList();
         const removed = [];
         const remaining = [];
+        const remainingToMatch = [];
+
+        for (const line of toRemoveLines) {
+          const def = matchesDefault(line);
+          if (def) {
+            if (!removedDefaults.includes(def)) removedDefaults.push(def);
+            removed.push(def);
+          } else {
+            remainingToMatch.push(normalizeHebrew(line.toLowerCase()));
+          }
+        }
+
         for (const item of items) {
           const normItem = normalizeHebrew(item.toLowerCase());
-          const match = toRemove.some((t) => normItem === t || normItem.includes(t) || t.includes(normItem));
+          const match = remainingToMatch.some((t) => normItem === t || normItem.includes(t) || t.includes(normItem));
           if (match) {
             removed.push(item);
           } else {
@@ -144,23 +181,50 @@ module.exports = async (req, res) => {
           }
         }
 
+        await saveRemovedDefaults(removedDefaults);
+        await saveList(remaining);
+
         if (removed.length === 0) {
           replyText = "לא מצאתי ברשימה מוצר שתואם למה שציינת.";
         } else {
-          await saveList(remaining);
-          replyText = `🗑️ הוסר/ו: ${removed.join(", ")} (נשארו ${remaining.length} מוצרים ברשימה)`;
+          const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+          const total = remaining.length + activeDefaults.length;
+          replyText = `🗑️ הוסר/ו: ${removed.join(", ")} (נשארו ${total} מוצרים ברשימה)`;
         }
       } else {
         const lines = bodyRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
-        let total = 0;
+        const removedDefaults = await loadRemovedDefaults();
+        const addedRegular = [];
+        const reactivated = [];
+        const alreadyThere = [];
+
         for (const line of lines) {
-          total = await addItem(line);
+          const def = matchesDefault(line);
+          if (def) {
+            const idx = removedDefaults.indexOf(def);
+            if (idx !== -1) {
+              removedDefaults.splice(idx, 1);
+              reactivated.push(def);
+            } else {
+              alreadyThere.push(def);
+            }
+          } else {
+            await addItem(line);
+            addedRegular.push(line);
+          }
         }
-        if (lines.length === 1) {
-          replyText = `✅ נוסף: ${lines[0]} (סה"כ ${total} מוצרים ברשימה)`;
-        } else {
-          replyText = `✅ נוספו ${lines.length} מוצרים: ${lines.join(", ")} (סה"כ ${total} מוצרים ברשימה)`;
-        }
+        await saveRemovedDefaults(removedDefaults);
+
+        const items = await loadList();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const total = items.length + activeDefaults.length;
+
+        const parts = [];
+        if (addedRegular.length > 0) parts.push(`נוסף: ${addedRegular.join(", ")}`);
+        if (reactivated.length > 0) parts.push(`הוחזר לרשימה: ${reactivated.join(", ")}`);
+        if (alreadyThere.length > 0) parts.push(`כבר ברשימה: ${alreadyThere.join(", ")}`);
+
+        replyText = `✅ ${parts.join(" | ")} (סה"כ ${total} מוצרים ברשימה)`;
       }
 
       await sendWhatsAppMessage(fromPhone, replyText);
