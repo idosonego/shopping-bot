@@ -1,182 +1,254 @@
-[
-  {
-    "id": "produce",
-    "name": "ירקות ופירות",
-    "keywords": ["עגבני", "מלפפ", "בצל", "שום", "תפוח אדמה", "בטטה", "גזר", "פלפל", "חסה",
-      "כרוב", "ברוקולי", "כרובית", "קישוא", "פטרי", "אבוקדו", "ליים", "לימונ", "תפוז",
-      "תפוח עץ", "בננ", "ענב", "תות", "אגס", "אפרסק", "מנגו", "אננס", "עשבי תיבול",
-      "פטרוזיליה", "כוסברה", "נענע", "תמר", "סלרי", "שעועית ירוק", "אפונה", "תירס טרי", "צנונית",
-      "סלק", "דלעת", "קולורבי", "בזיליקום", "ג'ינג'ר", "זנגביל", "אוכמני", "פטל", "דובדבנ",
-      "משמש", "אפרסמונ", "רימונ", "קיווי", "מלונ", "אבטיח", "שסק", "חציל", "כרישה",
-      "תרד", "רוקט", "עלי בייבי", "לפת", "עירית", "שמיר", "קלמנטינ", "שזיף", "נקטרינ",
-      "אשכולית", "ירקות", "פירות", "tomato", "cucumber", "onion", "garlic", "potato", "sweet potato",
-      "carrot", "capsicum", "bell pepper", "lettuce", "cabbage", "broccoli", "cauliflower", "zucchini", "mushroom",
-      "avocado", "lime", "lemon", "orange", "apple", "banana", "grape", "strawberr", "pear",
-      "peach", "mango", "pineapple", "herbs", "parsley", "coriander", "cilantro", "mint", "celery",
-      "spinach", "salad", "green bean", "peas", "sweet corn", "radish", "beetroot", "pumpkin", "basil",
-      "ginger", "blueberr", "raspberr", "cherr", "apricot", "persimmon", "pomegranate", "kiwi", "melon",
-      "watermelon", "eggplant", "aubergine", "leek", "shallot", "asparagus", "brussels sprout", "chilli", "chili",
-      "sprout", "rocket", "arugula", "kale", "bok choy", "turnip", "fennel", "nectarine", "plum",
-      "grapefruit", "mandarin", "vegetables", "fruit", "עגבניות שרי", "בצל ירוק", "בצל סגול", "תפוחי אדמה", "תפוח",
-      "סלט ירוק", "שעועית ירוקה"]
-  },
-  {
-    "id": "bakery",
-    "name": "מאפייה",
-    "keywords": ["לחם", "חלה", "פיתה", "בגט", "לחמני", "קרואסון", "עוגה", "מאפ", "בורקס",
-      "בייגל", "פוקאצ'ה", "לחם שיפון", "פרוסות טוסט", "bread", "baguette", "roll", "croissant", "cake",
-      "pastry", "bun", "muffin", "bagel", "focaccia", "sourdough", "toast", "pita", "flatbread",
-      "donut", "doughnut"]
-  },
-  {
-    "id": "meat_seafood",
-    "name": "בשר עוף ודגים",
-    "keywords": ["עוף", "בשר", "בקר", "טלה", "הודו", "נקניקי", "המבורגר", "סטייק", "דג",
-      "סלמונ", "טונה טרי", "שרימפס", "קציצ", "כבד", "אנטריקוט", "פילה", "שניצל", "כרעי עוף",
-      "חזה עוף", "כתף", "צלעות", "פרגי", "שיפוד", "קבב", "דניס", "לברק", "בקלה",
-      "שוקיים", "כנפיים", "chicken", "beef", "lamb", "turkey", "sausage", "burger", "steak",
-      "fish", "salmon", "fresh tuna", "prawn", "shrimp", "mince", "pork", "bacon", "liver",
-      "ribs", "fillet", "schnitzel", "drumstick", "thigh", "wings", "cutlet", "veal", "duck",
-      "kebab", "skewer", "barramundi", "snapper", "כרעיים", "עוף שלם", "בשר טחון", "כבש", "פילה דג"]
-  },
-  {
-    "id": "fridge",
-    "name": "מוצרי מקרר",
-    "keywords": ["גבינה", "פטה", "מוצרל", "פרמזן", "חומוס", "סלט קנוי", "נקניק", "פסטרמה", "סלמי",
-      "צ'דר", "קממבר", "בולגרית", "גבינת שמנת", "לברנה", "טחינה", "ביצ", "יוגורט", "חמאה",
-      "שמנת", "קוטג", "לבן", "מרגרינה", "מעדן חלב", "גבינה לבנה", "טופו", "ריקוטה", "גאודה",
-      "גבינה צהובה", "גבינת עיזים", "מעדן", "פודינג", "cheese", "feta", "mozzarella", "parmesan", "hummus",
-      "deli", "salami", "prosciutto", "ham", "cheddar", "camembert", "brie", "halloumi", "cream cheese",
-      "tahini", "antipasto", "eggs", "yoghurt", "yogurt", "butter", "cream", "cottage", "margarine",
-      "custard", "sour cream", "creme fraiche", "tofu", "ricotta", "gouda", "goat cheese", "pudding", "גבינות",
-      "שמנת חמוצה", "שמנת לבישול", "שמנת מתוקה", "חומוס מוכן", "פסטה טרייה", "סלט מוכן", "טחינה מוכנה"]
-  },
-  {
-    "id": "milk",
-    "name": "חלב",
-    "keywords": ["חלב", "שוקו", "חלב סויה", "חלב שקדים", "חלב שיבולת שועל", "חלב עמיד", "חלב דל לקטוז", "חלב טרי", "milk",
-      "chocolate milk", "milk alternative", "oat milk", "almond milk", "soy milk", "lactose free", "long life milk", "uht", "חלב 3%",
-      "חלב 1%", "חלב מרוכז", "שוקו בשקית", "חלב אבקה"]
-  },
-  {
-    "id": "spreads_breakfast",
-    "name": "ממרחים ודגני בוקר",
-    "keywords": ["ריבה", "נוטלה", "ממרח", "חמאת בוטנים", "דבש", "סילאן", "חלבה", "מייפל", "סירופ",
-      "קורנפלקס", "דגני בוקר", "שיבולת שועל", "גרנולה", "מוזלי", "דייסה", "פצפוצי אורז", "jam", "nutella",
-      "spread", "peanut butter", "honey", "date syrup", "halva", "maple", "syrup", "vegemite", "marmite",
-      "cereal", "oats", "porridge", "granola", "muesli", "weetbix", "cornflakes", "ממרח שוקולד", "סירופ מייפל"]
-  },
-  {
-    "id": "tea_coffee_biscuits",
-    "name": "תה, קפה וביסקוויטים",
-    "keywords": ["תה", "קפה", "קפה נמס", "קפה טחון", "פולי קפה", "קפסול", "חליטה", "תיון", "ביסקוויט",
-      "עוגי", "קרקר", "פתיבר", "tea", "coffee", "instant coffee", "coffee beans", "capsule", "nespresso",
-      "espresso", "herbal tea", "biscuit", "cookies", "cookie", "cracker", "tim tam", "תה ירוק", "תה נענע",
-      "נס קפה", "אספרסו", "אבקת שוקו", "פתי בר"]
-  },
-  {
-    "id": "snacks",
-    "name": "חטיפים וממתקים",
-    "keywords": ["חטיף", "צ'יפס", "במבה", "ביסלי", "שוקולד", "ממתק", "פופקורן", "אגוז", "בוטנ",
-      "וופל", "מרשמלו", "חטיפי דגני", "סוכריה", "סוכריות", "מסטיק", "קינדר", "פיסטוק", "קשיו",
-      "גרעינ", "פיצוחים", "פירות יבשים", "צימוק", "chips", "crisps", "chocolate", "candy", "lolly",
-      "popcorn", "nuts", "peanuts", "snack", "wafer", "marshmallow", "muesli bar", "pretzel", "gum",
-      "cashew", "almond", "pistachio", "seeds", "trail mix", "dried fruit", "raisin", "protein bar", "דוריטוס",
-      "חטיף אנרגיה", "חטיף חלבון", "שקדים", "אגוזי לוז", "משמש יבש"]
-  },
-  {
-    "id": "drinks",
-    "name": "משקאות",
-    "keywords": ["מים", "מיץ", "קולה", "סודה", "בירה", "יין", "משקה אנרגיה", "משקה מוגז", "סירופ ריכוז",
-      "מים מינרל", "פפסי", "ספרייט", "פאנטה", "וודקה", "ויסקי", "לימונדה", "תה קר", "איזוטוני",
-      "מי טוניק", "water", "juice", "cola", "soda", "beer", "wine", "energy drink", "soft drink",
-      "cordial", "sparkling water", "kombucha", "spring water", "pepsi", "vodka", "whisky", "gin", "cider",
-      "lemonade", "ice tea", "iced tea", "tonic", "isotonic", "alcohol", "שתייה", "מים מינרליים", "מיץ תפוזים",
-      "משקה קל", "משקה איזוטוני"]
-  },
-  {
-    "id": "oil_pasta_world",
-    "name": "שמן, פסטה ואוכל מהעולם",
-    "keywords": ["שמן זית", "שמן", "רוטב", "רוטב עגבניות", "רסק עגבניות", "פסטה", "ספגטי", "נודלס", "אורז",
-      "קוסקוס", "קינואה", "עדשים", "שעועית יבש", "חומץ", "מיונז", "קטשופ", "חרדל", "סויה",
-      "צ'ילי סוס", "דבש חרדל", "טורטיה", "טורטייה", "טאקו", "נאצ'וס", "בוריטו", "אנצ'ילדה", "גוואקמולי",
-      "סלסה", "אודון", "אטריות", "רמן", "סושי", "נורי", "ווסאבי", "סריראצ'ה", "מיסו",
-      "חלב קוקוס", "שמן שומשום", "olive oil", "oil", "sauce", "tomato paste", "pasta", "spaghetti", "noodle",
-      "rice", "couscous", "quinoa", "lentil", "vinegar", "mayo", "mayonnaise", "ketchup", "mustard",
-      "soy sauce", "chilli sauce", "salsa", "pesto", "gravy", "stock", "marinade", "tortilla", "taco",
-      "nachos", "burrito", "enchilada", "guacamole", "fajita", "wraps", "udon", "ramen", "sushi",
-      "nori", "wasabi", "sriracha", "miso", "coconut milk", "coconut cream", "sesame oil", "fish sauce", "oyster sauce",
-      "teriyaki", "hoisin", "kimchi", "rice paper", "שמן קנולה", "שמן קוקוס", "פנה", "פוזילי", "לזניה",
-      "רוטב פסטה", "אורז בסמטי", "אורז יסמין", "אטריות אורז", "אטריות ביצים", "רוטב סויה", "רוטב חריף", "שעועית שחורה", "בורגול",
-      "חומוס יבש", "פתיתים", "אצות נורי", "פסטו"]
-  },
-  {
-    "id": "spices_canned",
-    "name": "תבלינים ושימורים",
-    "keywords": ["מלח", "פלפל שחור", "תבלין", "פפריקה", "כורכום", "קימל", "כמון", "קינמון", "אורגנו",
-      "אבקת שום", "קארי", "שימור", "טונה", "טונה בקופסה", "תירס משומר", "אפונה משומר", "פולי סויה", "עגבניות שימורים",
-      "עגבניות מרוסקות", "גרגירי חומוס", "חמוצים", "מלפפון חמוץ", "ארטישוק", "סרדין", "מרק", "אבקת מרק", "salt",
-      "pepper", "spice", "seasoning", "paprika", "turmeric", "cumin", "cinnamon", "oregano", "garlic powder",
-      "curry", "canned", "tin", "tinned", "tuna", "sweetcorn", "canned tomato", "crushed tomato", "passata",
-      "diced tomato", "chickpea", "beans", "pickle", "gherkin", "artichoke", "sardine", "soup", "bouillon",
-      "טימין", "רוזמרין", "אבקת בצל", "תירס שימורים", "זיתים", "מלפפונים חמוצים", "פטריות שימורים", "שעועית שימורים", "אפונה שימורים",
-      "פלפלים קלויים", "אננס שימורים", "פירות שימורים", "olives"]
-  },
-  {
-    "id": "baking_kitchen",
-    "name": "קמח, סוכר וכלי מטבח",
-    "keywords": ["קמח", "סוכר", "שמרים", "אבקת אפיה", "ונילין", "שוקולד לאפיה", "קקאו", "סודה לשתיה", "סודה לשתייה",
-      "פירורי לחם", "קורנפלור", "נייר אפיה", "רדיד אלומיניום", "שקיות אחסון", "נייר כסף", "ניילון נצמד", "שקיות פריזר", "שקיות קפיאה",
-      "כלי אחסון", "קופסאות", "קופסת", "תבנית", "סיר", "מחבת", "כוסות חד", "צלחות חד", "סכו\"ם חד",
-      "קשית", "מקלות שיניים", "צנצנת", "נרות", "flour", "sugar", "yeast", "baking powder", "vanilla",
-      "baking chocolate", "cocoa", "bicarb", "baking soda", "icing sugar", "brown sugar", "breadcrumbs", "cornflour", "baking paper",
-      "aluminium foil", "foil", "cling wrap", "ziplock", "container", "containers", "tupperware", "baking tray", "tray",
-      "saucepan", "frying pan", "disposable", "paper plates", "paper cups", "straws", "toothpick", "bottle", "candle",
-      "קמח תופח", "קמח מלא", "סוכר חום", "סוכר אבקה", "אבקת אפייה", "וניל", "תמצית וניל", "אבקת קקאו", "נייר אפייה",
-      "אלומיניום", "קופסה", "תבניות", "כוסות חד פעמי", "צלחות חד פעמי", "סכו\"ם חד פעמי", "קשיות", "בקבוק"]
-  },
-  {
-    "id": "health_beauty",
-    "name": "קוסמטיקה ובריאות",
-    "keywords": ["שמפו", "מרכך", "סבון", "משחת שיניים", "דאודורנט", "תחבושת", "פד", "ויטמינ", "תרופה",
-      "אקמול", "קרם", "מברשת שינ", "קרם הגנה", "אלכוג'ל", "פלסטר", "צמר גפן", "מקלות אוזניים", "מסיר איפור",
-      "מגבוני", "קצף גילוח", "סכיני גילוח", "שפתון", "איפור", "לק", "בושם", "ג'ל שיער", "נורופן",
-      "אופטלגין", "מי פה", "חוט דנטלי", "shampoo", "conditioner", "soap", "toothpaste", "deodorant", "pad",
-      "tampon", "vitamin", "medicine", "panadol", "cream", "sunscreen", "toothbrush", "hand sanitiser", "bandaid",
-      "razor", "moisturiser", "lip balm", "cotton", "cotton buds", "makeup remover", "shaving", "perfume", "hair gel",
-      "hairspray", "nail polish", "lipstick", "makeup", "ibuprofen", "nurofen", "dental floss", "mouthwash", "קוסמטיקה",
-      "מרכך שיער", "סבון גוף", "סבון ידיים", "מברשת שיניים", "קרם ידיים", "קרם גוף", "קרם פנים", "קרם לחות", "תחבושות",
-      "טמפונים", "מגבונים לחים", "מסיר לק", "ספריי שיער"]
-  },
-  {
-    "id": "household",
-    "name": "מוצרי ניקיון",
-    "keywords": ["שקיות זבל", "סבון כלים", "אקונומיקה", "מנקה", "כביסה", "מרכך כביסה", "אבקת כביסה", "ג'ל כביסה", "נוזל רצפות",
-      "מנקה חלונות", "ספוג", "מטלית", "כפפות", "מסיר שומנים", "טבליות למדיח", "מלח למדיח", "מנקה אסלה", "מטהר אוויר",
-      "מגב", "מטאטא", "יעה", "גפרורים", "סקוטש", "מסיר אבנית", "garbage bag", "bin bag", "rubbish bag",
-      "bin liners", "dish soap", "dishwashing liquid", "bleach", "detergent", "cleaner", "laundry", "fabric softener", "sponge",
-      "mop", "dishwasher", "glass cleaner", "floor cleaner", "toilet cleaner", "air freshener", "gloves", "broom", "dustpan",
-      "matches", "scourer", "descaler", "ניקיון", "מטליות", "חומר ניקוי", "מנקה תנור"]
-  },
-  {
-    "id": "baby_pet",
-    "name": "תינוקות וחיות מחמד",
-    "keywords": ["חיתול", "מגבוני תינוק", "מטרנה", "אוכל לכלב", "אוכל לחתול", "חול לחתול", "בקבוק תינוק", "מזון תינוקות", "nappy",
-      "diaper", "baby wipes", "formula", "dog food", "cat food", "cat litter", "baby food", "puppy", "kitten"]
-  },
-  {
-    "id": "paper_frozen",
-    "name": "נייר טואלט וקפואים",
-    "keywords": ["נייר טואלט", "מגבת נייר", "מגבות נייר", "טישו", "מפית", "מפיות", "קפוא", "גלידה", "צ'יפס קפוא",
-      "ירקות קפואים", "פיצה קפואה", "ארטיק", "בצק עלים", "בצק פריך", "שניצל קפוא", "קרח", "כופתא", "סמבוסק",
-      "toilet paper", "toilet roll", "paper towel", "kitchen towel", "tissue", "tissues", "napkin", "frozen", "ice cream",
-      "icecream", "fries", "frozen veg", "frozen pizza", "gelato", "popsicle", "frozen meal", "puff pastry", "dumplings",
-      "ice cubes", "נייר מגבת", "גלידות", "פירות קפואים", "אפונה קפואה", "תירס קפוא", "לחם קפוא", "קציצות קפואות", "דג קפוא",
-      "פופסיקל"]
-  },
-  {
-    "id": "other",
-    "name": "שונות",
-    "keywords": []
+const categories = require("../categories.json");
+
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const LIST_KEY = "shopping:list";
+const REMOVED_DEFAULTS_KEY = "shopping:removed_defaults";
+const DEFAULT_ITEMS = ["חלב", "ביצים", "מלפפונים", "עגבניות"];
+
+async function redisCommand(...args) {
+  const res = await fetch(`${REDIS_URL}/${args.map(encodeURIComponent).join("/")}`, {
+    headers: { Authorization: `Bearer ${REDIS_TOKEN}` },
+  });
+  const data = await res.json();
+  return data.result;
+}
+
+async function loadList() {
+  const raw = await redisCommand("get", LIST_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+
+async function saveList(items) {
+  await redisCommand("set", LIST_KEY, JSON.stringify(items));
+}
+
+async function loadRemovedDefaults() {
+  const raw = await redisCommand("get", REMOVED_DEFAULTS_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+
+async function saveRemovedDefaults(arr) {
+  await redisCommand("set", REMOVED_DEFAULTS_KEY, JSON.stringify(arr));
+}
+
+async function addItem(text) {
+  const items = await loadList();
+  items.push(text.trim());
+  await saveList(items);
+  return items.length;
+}
+
+function normalizeHebrew(str) {
+  return str
+    .replace(/ן/g, "נ")
+    .replace(/ם/g, "מ")
+    .replace(/ץ/g, "צ")
+    .replace(/ף/g, "פ")
+    .replace(/ך/g, "כ");
+}
+
+const DEFAULT_ALIASES = {
+  "חלב": ["חלב"],
+  "ביצים": ["ביצים", "ביצה"],
+  "מלפפונים": ["מלפפונים", "מלפפון"],
+  "עגבניות": ["עגבניות", "עגבנייה", "עגבניה"],
+};
+
+function matchesDefault(text) {
+  const norm = normalizeHebrew(text.toLowerCase().trim());
+  return DEFAULT_ITEMS.find((d) => {
+    const names = DEFAULT_ALIASES[d] || [d];
+    return names.some((n) => normalizeHebrew(n.toLowerCase()) === norm);
+  });
+}
+
+function categoryIndexForItem(itemText) {
+  const lower = normalizeHebrew(itemText.toLowerCase());
+  let bestIndex = categories.length - 1;
+  let bestLength = 0;
+  for (let i = 0; i < categories.length; i++) {
+    for (const kw of categories[i].keywords) {
+      const nk = normalizeHebrew(kw.toLowerCase());
+      if (nk.length > bestLength && lower.includes(nk)) {
+        bestLength = nk.length;
+        bestIndex = i;
+      }
+    }
   }
-]
+  return bestIndex;
+}
+
+function buildSummary(items) {
+  const buckets = categories.map(() => []);
+  for (const item of items) buckets[categoryIndexForItem(item)].push(item);
+  const lines = [];
+  for (let i = 0; i < categories.length; i++) {
+    if (buckets[i].length === 0) continue;
+    lines.push(`*${categories[i].name}*`);
+    for (const item of buckets[i]) lines.push(`▫️ ${item}`);
+    lines.push("");
+  }
+  return lines.join("\n").trim();
+}
+
+async function sendWhatsAppMessage(toPhone, text) {
+  const url = `https://graph.facebook.com/v20.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`;
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      to: toPhone,
+      text: { body: text },
+    }),
+  });
+  console.log("Graph API:", resp.status, await resp.text());
+}
+
+module.exports = async (req, res) => {
+  if (req.method === "GET") {
+    const mode = req.query["hub.mode"];
+    const token = req.query["hub.verify_token"];
+    const challenge = req.query["hub.challenge"];
+    if (mode === "subscribe" && token === process.env.VERIFY_TOKEN) {
+      res.status(200).send(challenge);
+    } else {
+      res.status(403).send("Forbidden");
+    }
+    return;
+  }
+
+  if (req.method === "POST") {
+    try {
+      const message = req.body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+      console.log("Incoming POST, has message:", !!message);
+
+      if (!message || message.type !== "text") {
+        res.status(200).send("ok");
+        return;
+      }
+
+      const fromPhone = message.from;
+      const bodyRaw = message.text.body.trim();
+      let replyText;
+
+      if (bodyRaw === "תצוגה") {
+        const items = await loadList();
+        const removedDefaults = await loadRemovedDefaults();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const fullList = [...activeDefaults, ...items];
+        if (fullList.length === 0) {
+          replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש *תצוגה* או *סיכום*.";
+        } else {
+          replyText = "👀 *תצוגת הרשימה הנוכחית:*\n\n" + buildSummary(fullList);
+        }
+      } else if (bodyRaw === "סיכום") {
+        const items = await loadList();
+        const removedDefaults = await loadRemovedDefaults();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const fullList = [...activeDefaults, ...items];
+        if (fullList.length === 0) {
+          replyText = "הרשימה ריקה כרגע. שלח לי מוצרים ואז בקש שוב *סיכום*.";
+        } else {
+          replyText = "📝 *רשימת קניות מסודרת:*\n\n" + buildSummary(fullList);
+          await saveList([]);
+          await saveRemovedDefaults([]);
+          replyText += "\n\n✅ הרשימה אופסה (מוצרי הקבע חזרו). אפשר להתחיל רשימה חדשה.";
+        }
+      } else if (bodyRaw === "איפוס" || bodyRaw === "נקה") {
+        await saveList([]);
+        await saveRemovedDefaults([]);
+        replyText = "🗑️ הרשימה אופסה ידנית (מוצרי הקבע חזרו).";
+      } else if (bodyRaw.startsWith("תוריד ") || bodyRaw.startsWith("להוריד ")) {
+        const prefixLen = bodyRaw.startsWith("להוריד ") ? 7 : 6;
+        const toRemoveRaw = bodyRaw.slice(prefixLen).trim();
+        const toRemoveLines = toRemoveRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
+
+        const removedDefaults = await loadRemovedDefaults();
+        const items = await loadList();
+        const removed = [];
+        const remaining = [];
+        const remainingToMatch = [];
+
+        for (const line of toRemoveLines) {
+          const def = matchesDefault(line);
+          if (def) {
+            if (!removedDefaults.includes(def)) removedDefaults.push(def);
+            removed.push(def);
+          } else {
+            remainingToMatch.push(normalizeHebrew(line.toLowerCase()));
+          }
+        }
+
+        for (const item of items) {
+          const normItem = normalizeHebrew(item.toLowerCase());
+          const match = remainingToMatch.some((t) => normItem === t || normItem.includes(t) || t.includes(normItem));
+          if (match) {
+            removed.push(item);
+          } else {
+            remaining.push(item);
+          }
+        }
+
+        await saveRemovedDefaults(removedDefaults);
+        await saveList(remaining);
+
+        if (removed.length === 0) {
+          replyText = "לא מצאתי ברשימה מוצר שתואם למה שציינת.";
+        } else {
+          const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+          const total = remaining.length + activeDefaults.length;
+          replyText = `🗑️ הוסר/ו: ${removed.join(", ")} (נשארו ${total} מוצרים ברשימה)`;
+        }
+      } else {
+        const lines = bodyRaw.split("\n").map((l) => l.trim()).filter((l) => l.length > 0);
+        const removedDefaults = await loadRemovedDefaults();
+        const addedRegular = [];
+        const reactivated = [];
+        const alreadyThere = [];
+
+        for (const line of lines) {
+          const def = matchesDefault(line);
+          if (def) {
+            const idx = removedDefaults.indexOf(def);
+            if (idx !== -1) {
+              removedDefaults.splice(idx, 1);
+              reactivated.push({ text: def, cat: categories[categoryIndexForItem(def)].name });
+            } else {
+              alreadyThere.push(def);
+            }
+          } else {
+            await addItem(line);
+            addedRegular.push({ text: line, cat: categories[categoryIndexForItem(line)].name });
+          }
+        }
+        await saveRemovedDefaults(removedDefaults);
+
+        const items = await loadList();
+        const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
+        const total = items.length + activeDefaults.length;
+
+        const msgLines = [];
+        for (const a of addedRegular) msgLines.push(`✅ ${a.text} הוסף לרשימת ${a.cat}`);
+        for (const r of reactivated) msgLines.push(`↩️ ${r.text} הוחזר לרשימת ${r.cat}`);
+        for (const d of alreadyThere) msgLines.push(`ℹ️ ${d} כבר ברשימה`);
+        msgLines.push(`(סה"כ ${total} מוצרים ברשימה)`);
+
+        replyText = msgLines.join("\n");
+      }
+
+      await sendWhatsAppMessage(fromPhone, replyText);
+      res.status(200).send("ok");
+    } catch (err) {
+      console.error("Handler error:", err);
+      res.status(200).send("ok");
+    }
+    return;
+  }
+
+  res.status(405).send("Method Not Allowed");
+};
