@@ -48,22 +48,35 @@ function normalizeHebrew(str) {
     .replace(/ך/g, "כ");
 }
 
+const DEFAULT_ALIASES = {
+  "חלב": ["חלב"],
+  "ביצים": ["ביצים", "ביצה"],
+  "מלפפונים": ["מלפפונים", "מלפפון"],
+  "עגבניות": ["עגבניות", "עגבנייה", "עגבניה"],
+};
+
 function matchesDefault(text) {
-  const norm = normalizeHebrew(text.toLowerCase());
+  const norm = normalizeHebrew(text.toLowerCase().trim());
   return DEFAULT_ITEMS.find((d) => {
-    const nd = normalizeHebrew(d.toLowerCase());
-    return norm === nd || norm.includes(nd) || nd.includes(norm);
+    const names = DEFAULT_ALIASES[d] || [d];
+    return names.some((n) => normalizeHebrew(n.toLowerCase()) === norm);
   });
 }
 
 function categoryIndexForItem(itemText) {
   const lower = normalizeHebrew(itemText.toLowerCase());
+  let bestIndex = categories.length - 1;
+  let bestLength = 0;
   for (let i = 0; i < categories.length; i++) {
     for (const kw of categories[i].keywords) {
-      if (lower.includes(normalizeHebrew(kw.toLowerCase()))) return i;
+      const nk = normalizeHebrew(kw.toLowerCase());
+      if (nk.length > bestLength && lower.includes(nk)) {
+        bestLength = nk.length;
+        bestIndex = i;
+      }
     }
   }
-  return categories.length - 1;
+  return bestIndex;
 }
 
 function buildSummary(items) {
