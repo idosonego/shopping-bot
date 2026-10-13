@@ -217,13 +217,13 @@ module.exports = async (req, res) => {
             const idx = removedDefaults.indexOf(def);
             if (idx !== -1) {
               removedDefaults.splice(idx, 1);
-              reactivated.push(def);
+              reactivated.push({ text: def, cat: categories[categoryIndexForItem(def)].name });
             } else {
               alreadyThere.push(def);
             }
           } else {
             await addItem(line);
-            addedRegular.push(line);
+            addedRegular.push({ text: line, cat: categories[categoryIndexForItem(line)].name });
           }
         }
         await saveRemovedDefaults(removedDefaults);
@@ -232,12 +232,13 @@ module.exports = async (req, res) => {
         const activeDefaults = DEFAULT_ITEMS.filter((d) => !removedDefaults.includes(d));
         const total = items.length + activeDefaults.length;
 
-        const parts = [];
-        if (addedRegular.length > 0) parts.push(`נוסף: ${addedRegular.join(", ")}`);
-        if (reactivated.length > 0) parts.push(`הוחזר לרשימה: ${reactivated.join(", ")}`);
-        if (alreadyThere.length > 0) parts.push(`כבר ברשימה: ${alreadyThere.join(", ")}`);
+        const msgLines = [];
+        for (const a of addedRegular) msgLines.push(`✅ ${a.text} הוסף לרשימת ${a.cat}`);
+        for (const r of reactivated) msgLines.push(`↩️ ${r.text} הוחזר לרשימת ${r.cat}`);
+        for (const d of alreadyThere) msgLines.push(`ℹ️ ${d} כבר ברשימה`);
+        msgLines.push(`(סה"כ ${total} מוצרים ברשימה)`);
 
-        replyText = `✅ ${parts.join(" | ")} (סה"כ ${total} מוצרים ברשימה)`;
+        replyText = msgLines.join("\n");
       }
 
       await sendWhatsAppMessage(fromPhone, replyText);
